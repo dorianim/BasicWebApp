@@ -7,6 +7,7 @@ public class QueryProcessor {
 
     public String process(String query) {
 		query = query.toLowerCase();
+        System.out.println("Query: " + query);
         if (query.contains("shakespeare")) {
             return "William Shakespeare (26 April 1564 - 23 April 1616) was an " +
                     "English poet, playwright, and actor, widely regarded as the greatest " +
@@ -14,10 +15,10 @@ public class QueryProcessor {
         } else if (query.contains("name")) {
            return "Finn D.";
         } else if (query.startsWith("what is") && query.contains("plus")){ // TODO extend the programm here
-            // parse 15 plus 17
+            // parse what is 11 plus 10
             String[] split = query.split("plus");
-            int a = Integer.parseInt(split[0].substring(7));
-            int b = Integer.parseInt(split[1].substring(7));
+            int a = Integer.parseInt(split[0].replaceAll("[^\\d.]", ""));
+            int b = Integer.parseInt(split[1].replaceAll("[^\\d.]", ""));
             return String.valueOf(a + b);
         }
         else if(query.startsWith("which of the following numbers is the largest: ")) {

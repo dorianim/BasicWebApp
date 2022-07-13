@@ -37,7 +37,7 @@ public class QueryProcessor {
         }
         else if(query.contains("what is") && query.contains("divided by")){ // TODO extend the programm here
             // parse what is 11 divided by 10
-            String[] split = quequery.split("what is")[1]ry.split("divided by");
+            String[] split = query.split("what is")[1].split("divided by");
             int a = Integer.parseInt(split[0].replaceAll("[^\\d.]", ""));
             int b = Integer.parseInt(split[1].replaceAll("[^\\d.]", ""));
             return String.valueOf(a / b);

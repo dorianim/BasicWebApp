@@ -25,14 +25,26 @@ public class QueryProcessor {
             // parse which of the following numbers is the largest:  147, 264, 19, 85
             String[] split = query.split("which of the following numbers is the largest: ");
             String[] numbers = split[1].split(", ");
-            int max = Integer.parseInt(numbers[0]);
+            int max = Integer.parseInt(numbers[0].replaceAll("[^\\d.]", ""));
             for(int i = 1; i < numbers.length; i++) {
-                int number = Integer.parseInt(numbers[i]);
+                int number = Integer.parseInt(numbers[i].replaceAll("[^\\d.]", ""));
                 if(number > max) {
                     max = number;
                 }
             }
             return String.valueOf(max);
+        }
+        else if(query.startsWith("which of the following numbers is both a square and a cube:")) {
+            // parse which of the following numbers is both a square and a cube: 914, 64, 841, 415
+            String[] split = query.split("which of the following numbers is both a square and a cube: ");
+            String[] numbers = split[1].split(", ");
+            for(int i = 0; i < numbers.length; i++) {
+                int number = Integer.parseInt(numbers[i].replaceAll("[^\\d.]", ""));
+                if(Math.sqrt(number) == (int)Math.sqrt(number) && Math.cbrt(number) == (int)Math.cbrt(number)) {
+                    return String.valueOf(number);
+                }
+            }
+            return "";
         }
         else {
             return "\\(°~°)/";

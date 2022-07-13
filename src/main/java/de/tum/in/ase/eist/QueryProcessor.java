@@ -21,6 +21,34 @@ public class QueryProcessor {
             int b = Integer.parseInt(split[1].replaceAll("[^\\d.]", ""));
             return String.valueOf(a + b);
         }
+        else if(query.startsWith("what is") && query.contains("minus")){ // TODO extend the programm here
+            // parse what is 11 minus 10
+            String[] split = query.split("minus");
+            int a = Integer.parseInt(split[0].replaceAll("[^\\d.]", ""));
+            int b = Integer.parseInt(split[1].replaceAll("[^\\d.]", ""));
+            return String.valueOf(a - b);
+        }
+        else if(query.startsWith("what is") && query.contains("multiplied by")){ // TODO extend the programm here
+            // parse what is 11 times 10
+            String[] split = query.split("multiplied by");
+            int a = Integer.parseInt(split[0].replaceAll("[^\\d.]", ""));
+            int b = Integer.parseInt(split[1].replaceAll("[^\\d.]", ""));
+            return String.valueOf(a * b);
+        }
+        else if(query.startsWith("what is") && query.contains("divided by")){ // TODO extend the programm here
+            // parse what is 11 divided by 10
+            String[] split = query.split("divided by");
+            int a = Integer.parseInt(split[0].replaceAll("[^\\d.]", ""));
+            int b = Integer.parseInt(split[1].replaceAll("[^\\d.]", ""));
+            return String.valueOf(a / b);
+        }
+        else if(query.startsWith("what is") && query.contains("modulo")){ // TODO extend the programm here
+            // parse what is 11 modulo 10
+            String[] split = query.split("modulo");
+            int a = Integer.parseInt(split[0].replaceAll("[^\\d.]", ""));
+            int b = Integer.parseInt(split[1].replaceAll("[^\\d.]", ""));
+            return String.valueOf(a % b);
+        }
         else if(query.startsWith("which of the following numbers is the largest: ")) {
             // parse which of the following numbers is the largest:  147, 264, 19, 85
             String[] split = query.split("which of the following numbers is the largest: ");
